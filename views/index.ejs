@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metallica Festival</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <h1>Metallica Festival</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/lineup">Lineup</a></li>
+                <li><a href="/stages">Stages</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Content -->
+    <section>
+        <div class="container">
+            <div class="counter">
+                <div class="block">
+                    <h2 class="days"><%= days %></h2>
+                    <h6>days</h6>
+                </div>
+            </div>
+            <div class="counter">
+                <div class="block">
+                    <h2 class="hours"><%= hours %></h2>
+                    <h6>hours</h6>
+                </div>
+            </div>
+            <div class="counter">
+                <div class="block">
+                    <h2 class="min"><%= min %></h2>
+                    <h6>minutes</h6>
+                </div>
+            </div>
+            <div class="counter">
+                <div class="block">
+                    <h2 class="sec"><%= sec %></h2>
+                    <h6>seconds</h6>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event Info -->
+        <div class="event-info">
+            <p class="date"><%= concertDate %></p>
+            <p class="location"><%= concertLocation %></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Metallica Festival</p>
+    </footer>
+
+    <!-- Countdown Script -->
+    <script>
+        function updateTimeLeft() {
+            const eventDate = new Date("<%= concertDate %>");
+            const now = new Date();
+            let timeLeft = eventDate - now;
+
+            if (timeLeft <= 0) {
+                clearInterval(timerID);
+                eventIsOver();
+                setTimeout(restartCountdown, 1 * 60 * 1000); // Restart countdown after 1 minute
+                return;
+            }
+
+            const msInSec = 1000;
+            const msInMin = 60 * msInSec;
+            const msInHr = 60 * msInMin;
+            const msInDay = 24 * msInHr;
+
+            const displayDays = Math.floor(timeLeft / msInDay);
+            document.querySelector(".days").textContent = displayDays;
+
+            const displayHours = Math.floor((timeLeft % msInDay) / msInHr);
+            document.querySelector(".hours").textContent = displayHours;
+
+            const displayMin = Math.floor((timeLeft % msInHr) / msInMin);
+            document.querySelector(".min").textContent = displayMin;
+
+            const displaySec = Math.floor((timeLeft % msInMin) / msInSec);
+            document.querySelector(".sec").textContent = displaySec;
+        }
+
+        function eventIsOver() {
+            const heading = document.querySelector("h1");
+            heading.textContent = "Event is over";
+            heading.classList.add("endTitle");
+
+            const subHeading = document.querySelector("h3");
+            subHeading.textContent = "See you next year!";
+        }
+
+        function restartCountdown() {
+            const now = new Date();
+            const nextYear = now.getFullYear() + 1;
+            const eventDate = new Date(`June 20, ${nextYear} 18:30:00`);
+            let timeLeft = eventDate - now;
+
+            const randomIndex = Math.floor(Math.random() * cities.length);
+            const randomCity = cities[randomIndex];
+
+            const eventDateElement = document.getElementById("eventDate");
+            eventDateElement.textContent = `June 20, ${nextYear} | ${randomCity}`;
+
+            const heading = document.querySelector("h1");
+            heading.textContent = "Insound";
+            heading.classList.remove("endTitle");
+
+            const subHeading = document.querySelector("h3");
+            subHeading.textContent = "Music festival";
+
+            clearInterval(timerID);
+
+            timerID = setInterval(function () {
+                timeLeft -= 1000;
+                if (timeLeft <= 0) {
+                    restartCountdown();
+                    return;
+                }
+
+                updateTimeLeft(timeLeft);
+            }, 1000);
+        }
+
+        let timerID = setInterval(updateTimeLeft, 1000);
+    </script>
+</body>
+</html>

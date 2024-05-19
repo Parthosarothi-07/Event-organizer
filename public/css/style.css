@@ -1,0 +1,172 @@
+/* Reset default styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive, 'Trispace', sans-serif;
+    background-image: url('/images/metallica_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Header styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+header h1 {
+    color: #ff0000;
+    margin: 0;
+    font-size: 2rem;
+    animation: bloodDrop 2s infinite;
+}
+
+@keyframes bloodDrop {
+    0%, 100% {
+        text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red, 0 0 40px red;
+    }
+    50% {
+        text-shadow: 0 0 20px darkred, 0 0 30px darkred, 0 0 40px darkred, 0 0 50px darkred;
+    }
+}
+
+/* Navigation styles */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ff0000;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: red;
+    transition: width 0.3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a:hover {
+    color: #fff;
+}
+
+/* Timer Section styles */
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px); /* Adjust if header height changes */
+}
+
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.counter {
+    margin: 0 10px; /* Adjust spacing between counters */
+}
+
+.block {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.block:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.block h2 {
+    color: #ff0000;
+    font-size: 3rem;
+    margin: 0;
+}
+
+.block h6 {
+    color: #fff;
+    font-size: 1rem;
+    margin: 5px 0 0;
+}
+
+/* Event info styles */
+.event-info {
+    margin-top: 20px; /* Adjust the spacing as needed */
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.event-info:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.event-info .date,
+.event-info .location {
+    font-size: 1.2rem;
+    margin: 5px 0;
+    color: #ff0000;
+    text-shadow: 0 0 5px #ff0000;
+}
+.stage-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 200px); /* Adjust for header and footer height */
+}
+
+
+
+/* Footer styles */
+footer {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 10px 0;
+}
+
+footer p {
+    margin: 0;
+}

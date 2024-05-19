@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metallica Festival - Stages</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* Additional Styles */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .stage-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .stage {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stage:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.5);
+        }
+
+        .stage h2 {
+            color: #ff0000;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .stage p {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .artists {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .artists h3 {
+            color: #ff0000;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .artists ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .artists li {
+            margin-bottom: 10px;
+        }
+
+        .artists h4 {
+            color: #ff0000;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <h1>Metallica Festival</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/lineup">Lineup</a></li>
+                <li><a href="/stages">Stages</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Content -->
+    <section class="stage-container">
+        <% stages.forEach(stage => { %>
+        <div class="stage">
+            <h2><%= stage.name %></h2>
+            <p><%= stage.description %></p>
+            <div class="artists">
+                <h3>Performing Artists:</h3>
+                <ul>
+                    <% stage.artists.forEach(artist => { %>
+                    <li>
+                        <h4><%= artist.name %></h4>
+                        <p><%= artist.genre %></p>
+                        <p><%= artist.description %></p>
+                    </li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+        <% }) %>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Metallica Festival</p>
+    </footer>
+</body>
+
+</html>

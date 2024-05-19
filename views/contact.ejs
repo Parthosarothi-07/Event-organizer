@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metallica Festival - Contact Us</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* Additional Styles for Form Section */
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: rgba(26, 26, 26, 0.8); /* Transparent black background */
+        }
+
+        form {
+            max-width: 600px; /* Adjust as needed */
+            width: 100%;
+            padding: 20px;
+            background-color: #2d2d2d; /* Darker background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Soft shadow */
+        }
+
+        form div {
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ff0000; /* Metallica red */
+            font-size: 16px;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ff0000; /* Metallica red border */
+            border-radius: 5px;
+            background-color: #1a1a1a; /* Dark background */
+            color: #fff; /* White text */
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        form input[type="text"]:focus,
+        form input[type="email"]:focus,
+        form textarea:focus {
+            outline: none;
+            border-color: #ff0000; /* Metallica red on focus */
+        }
+
+        form textarea {
+            resize: vertical;
+        }
+
+        form input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff0000; /* Metallica red button */
+            color: #fff; /* White text */
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #d60000; /* Darker Metallica red on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <h1>Metallica Festival</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/lineup">Lineup</a></li>
+                <li><a href="/stages">Stages</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Content -->
+    <main>
+        <form action="/submit-contact-form" method="POST">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            <div>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Metallica Festival</p>
+    </footer>
+</body>
+
+</html>
