@@ -58,9 +58,9 @@ db.serialize(() => {
 
     // Insert artists into lineup table
     const artists = [
-        { name: 'Metallica', genre: 'Heavy Metal', description: 'Legendary heavy metal band', image: 'metallica.jpg' },
-        { name: 'Iron Maiden', genre: 'Heavy Metal', description: 'Iconic heavy metal band', image: 'ironmaiden.jpg' },
-        { name: 'Slayer', genre: 'Thrash Metal', description: 'Influential thrash metal band', image: 'slayer.jpg' }
+        { name: 'Metallica', genre: 'Heavy Metal', description: 'Legendary heavy metal band' },
+        { name: 'Iron Maiden', genre: 'Heavy Metal', description: 'Iconic heavy metal band' },
+        { name: 'Slayer', genre: 'Thrash Metal', description: 'Influential thrash metal band'}
     ];
 
     const stmtLineup = db.prepare(`INSERT INTO lineup (name, genre, description, image) VALUES (?, ?, ?, ?)`);

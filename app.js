@@ -73,16 +73,21 @@ app.get('/', (req, res) => {
 });
 
 app.get('/lineup', (req, res) => {
-    // Fetch lineup data from the database
+    res.render('lineup');
+});
+
+// API endpoint to fetch lineup data
+app.get('/api/lineup', (req, res) => {
     db.all('SELECT * FROM lineup', (err, rows) => {
         if (err) {
             console.error(err.message);
             return res.status(500).send('Internal Server Error');
         }
-        // Render lineup.ejs and pass lineup data
-        res.render('lineup', { lineup: rows });
+        res.json(rows);
     });
 });
+
+
 app.get('/stages', (req, res) => {
     const stagesQuery = `SELECT * FROM stages`;
     const artistsQuery = `SELECT lineup.*, artist_stages.stage_id FROM lineup 

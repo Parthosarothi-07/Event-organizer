@@ -1,65 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metallica Festival - Lineup</title>
+    <title>Lineup</title>
     <link rel="stylesheet" href="/css/style.css">
-    <style>
-        /* Metallica Festival Theme Styles */
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        main {
-            padding: 20px;
-            max-width: 800px; /* Adjust as needed */
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th,
-        td {
-            border: 1px solid #fff;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #333;
-        }
-
-        td {
-            background-color: #555;
-        }
-
-        footer {
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-
 <body>
-    <!-- Header and Navigation -->
     <header>
         <h1>Metallica Festival</h1>
         <nav>
@@ -73,48 +21,48 @@
         </nav>
     </header>
 
-    <!-- Content -->
-    <main>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Genre</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% 
-                // Create a Set to store unique artists
-                const uniqueArtistsSet = new Set();
+    <section id="lineup">
+        <h2>Lineup</h2>
+        <div id="artists-container">
+            <table id="artists-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Genre</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody id="artists"></tbody>
+            </table>
+        </div>
+    </section>
 
-                // Iterate over the lineup and add each artist to the Set
-                lineup.forEach(function(artist) {
-                    uniqueArtistsSet.add(artist.name);
-                });
-
-                // Convert Set back to an array
-                const uniqueArtistsArray = [...uniqueArtistsSet];
-
-                // Iterate over the unique artists and render them in the table
-                uniqueArtistsArray.forEach(function(artistName) {
-                    // Find the artist object in the lineup array
-                    const artist = lineup.find(a => a.name === artistName);
-                %>
-                <tr>
-                    <td><%= artist.name %></td>
-                    <td><%= artist.genre %></td>
-                    <td><%= artist.description %></td>
-                </tr>
-                <% }); %>
-            </tbody>
-        </table>
-    </main>
-
-    <!-- Footer -->
     <footer>
         <p>&copy; 2024 Metallica Festival</p>
     </footer>
-</body>
 
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: '/api/lineup',
+                method: 'GET',
+                success: function(data) {
+                    const artistsTable = $('#artists');
+                    data.forEach(artist => {
+                        artistsTable.append(`
+                            <tr>
+                                <td>${artist.name}</td>
+                                <td>${artist.genre}</td>
+                                <td>${artist.description}</td>
+                            </tr>
+                        `);
+                    });
+                },
+                error: function(error) {
+                    console.error('Error fetching lineup data', error);
+                }
+            });
+        });
+    </script>
+</body>
 </html>
