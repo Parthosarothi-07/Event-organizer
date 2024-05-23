@@ -136,12 +136,95 @@
             bottom: 0;
             width: 100%;
         }
+
+        /* Greeting styling */
+        .greeting {
+            font-size: 2rem;
+            color: #ff0000;
+            margin-top: 100px; /* Increased margin to provide more space from the header */
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red;
+            }
+            50% {
+                text-shadow: 0 0 20px darkred, 0 0 30px darkred, 0 0 40px darkred;
+            }
+        }
+
+        /* Program and Speakers styling */
+        .program, .featured-speakers {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .program-heading, .speaker-heading {
+            font-size: 2rem;
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
+
+        .line {
+            width: 80%;
+            height: 2px;
+            background-color: #ff0000;
+            margin: 10px auto;
+        }
+
+        .program-list-container, .fs-container {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .program-box, .program-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .program-item i {
+            font-size: 2rem;
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
+
+        .program-title {
+            font-size: 1.5rem;
+            color: #ff0000;
+            margin: 10px 0 5px;
+        }
+
+        .program-text {
+            color: #fff;
+            font-size: 1rem;
+            margin: 5px 0;
+        }
+        .program-box:hover {
+        transform: translateY(-5px); /* Move the box up slightly on hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Add a shadow effect */
+        }
+
+        .program-item {
+        transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition effect */
+        }
+
     </style>
 </head>
 <body>
     <!-- Header and Navigation -->
     <header>
-        <h1>Metallica Festival</h1>
+        <h1>Welcome to Metallica Festival 2024</h1>
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
@@ -152,6 +235,9 @@
             </ul>
         </nav>
     </header>
+
+    <!-- Greeting -->
+    <div class="greeting">Join us in</div>
 
     <!-- Content -->
     <section>
@@ -183,11 +269,26 @@
         </div>
 
         <!-- Event Info -->
+        <div class="greeting">Coming to</div>
         <div class="event-info">
             <p class="date"><%= concertDate %></p>
             <p class="location"><%= concertLocation %></p>
         </div>
     </section>
+
+    <!-- Program Section -->
+    <section id="program" class="program">
+        <ul class="program-list-container">
+            <li class="program-box">
+                <div class="program-item">
+                    <i class="fas fa-music bars-fw1 bars-fw1-bold" aria-hidden="true"></i>
+                    <p class="program-text">Celebrate the longest day of the year with us!
+                        <i class="fas fa-guitar bars-fw1 bars-fw1-bold" aria-hidden="true"></i>
+                        <h6 class="program-title">We are back with the Heavy Metal Concert</h6>
+                        <p class="program-text">Enjoy multiple stages of play </p>
+                    </p>
+                </div>
+            </li>
 
     <!-- Footer -->
     <footer>
